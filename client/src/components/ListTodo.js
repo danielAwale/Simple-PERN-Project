@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react'
 
 const ListTodo = () => {
 
-  const [todos, setTodos] = useState("");
+  const [todos, setTodos] = useState([]);
 
   const deleteTodo = async (id) => {
     try {
@@ -33,7 +33,6 @@ const ListTodo = () => {
     getTodos();
   }, [])
 
-  console.log(todos)
   return (
     <Fragment>
       <table className="table mt-5 text-center">
