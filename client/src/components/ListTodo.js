@@ -36,6 +36,13 @@ const ListTodo = () => {
             <td>john@example.com</td>
           </tr> 
         */}
+          {todos.map(todo => (
+            <tr>
+              <td>{todo.description}</td>
+              <td>Edit</td>
+              <td>Delete</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Fragment>
