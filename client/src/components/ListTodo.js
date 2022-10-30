@@ -10,7 +10,7 @@ const ListTodo = () => {
         method: "DELETE"
       });
 
-      console.log(deleteTodo)
+      setTodos(todos.filter(todo => todo.todo_id !== id));
 
     } catch (err) {
       console.log(err.message)
