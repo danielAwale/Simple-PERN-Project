@@ -1,8 +1,25 @@
 import React, { Fragment, useState } from 'react'
 
 const EditTodo = ({ todo }) => {
-  const [description, setDescription] = useState(todo.description)
-  console.log(todo)
+  const [description, setDescription] = useState(todo.description);
+
+  //edit description
+  const updateDescription = async (e) => {
+    e.preventDefault();
+    try {
+      const body = { description }
+      const response = await fetch(`http://localhost:5000/todos/${todo.todo_id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+
+      console.log(response)
+    } catch (err) {
+      console.error(err.message)
+    }
+  }
+
   return (
     <>
       <button type="button" className="btn btn-warning" data-toggle="modal" data-target={`#id${todo.todo_id}`}>
@@ -19,11 +36,11 @@ const EditTodo = ({ todo }) => {
             </div>
 
             <div className="modal-body">
-              <input type="text" className='form-control' value={description} />
+              <input type="text" className='form-control' value={description} onChange={e => setDescription(e.target.value)} />
             </div>
 
             <div className="modal-footer">
-              <button type="button" className="btn btn-warning" data-dismiss="modal">Edit</button>
+              <button type="button" className="btn btn-warning" data-dismiss="modal" onClick={e => updateDescription(e)}>Edit</button>
               <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
 
