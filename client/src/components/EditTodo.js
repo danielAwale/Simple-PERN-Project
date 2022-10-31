@@ -14,7 +14,7 @@ const EditTodo = ({ todo }) => {
         body: JSON.stringify(body)
       });
 
-      console.log(response)
+      window.location = "/"
     } catch (err) {
       console.error(err.message)
     }
@@ -32,7 +32,7 @@ const EditTodo = ({ todo }) => {
 
             <div className="modal-header">
               <h4 className="modal-title">Edit Todo</h4>
-              <button type="button" className="close" data-dismiss="modal">&times;</button>
+              <button type="button" className="close" data-dismiss="modal" onClick={() => setDescription(todo.description)}></button>
             </div>
 
             <div className="modal-body">
